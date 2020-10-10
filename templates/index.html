@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<section id="header">
+    <div class="container">
+        <div class="main-text">
+            <span style="color:white; font-size:65px;">W</span><span style="color: white; font-size:55px;">eb</span>
+            <span style="color:grey; font-size:65px;">D</span><span
+                style="color:grey; font-size:55px;">evelopment</span>
+        </div>
+        <div class="learn">
+            Learn Full-Stack Web Development with us.
+        </div>
+    </div>
+</section>
+
+
+<section id="topics">
+    <!--div class="container">
+        <div class="topic">
+            <h1>Courses</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="course-box">
+
+                    <div class="course-head">
+                        <h2>PYTHON/</h2>
+                        <h2>DJANGO</h2>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li>Basics of Python like functions, classes, loops, etc</li>
+                            <li>Learn the power of Python to code out your web applications</li>
+                            <li>Implement a full Models-Views-Templates structure for your site</li>
+                            <li>Use Django as a back end for the websites</li>
+                            <li>Create a fully functional web site using the Full-Stack with Django 3.0</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-box">
+                    <div class="course-head">
+                        <h2>HTML/</h2>
+                        <h2>CSS</h2>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li>Create any website layout you can imagine with HTML5 and CSS</li>
+                            <li>Real-world skills to build real-world websites: professional, beautiful and truly
+                                responsive
+                                website
+                            </li>
+                            <li>Simple-to-use web design guidelines and tips to make your website stand out from the
+                                crowd
+                            </li>
+                            <li>Support any device size with Responsive (mobile-friendly) Design.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="course-box">
+                    <div class="course-head">
+                        <h2>JAVASCRIPT/</h2>
+                        <h2>REACT</h2>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li>Go from a total beginner to an advanced JavaScript developer</li>
+                            <li>Code 3 beautiful real-world apps with both ES5 and ES6+ (no boring toy apps here)</li>
+                            <li>JavaScript and programming fundamentals: variables, boolean logic, if/else, loops,
+                                functions,
+                                arrays, etc.
+                            </li>
+                            <li>Complex features like the 'this' keyword, function constructors, prototypal inheritance,
+                                first-class functions, closures
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div-->
+
+
+    <div class="container">
+
+        <div class="topic">
+            <h1>Courses</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'python' %}"><img class="img-fluid" src="{% static 'images/logos/python.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'django' %}"><img class="img-fluid" src="{% static 'images/logos/django.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'html' %}"><img class="img-fluid" src="{% static 'images/logos/html.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'bootstrap' %}"><img class="img-fluid" src="{% static 'images/logos/bootstrap.png' %}"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'javascript' %}"><img class="img-fluid" src="{% static 'images/logos/javascript.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'angular' %}"><img class="img-fluid" src="{% static 'images/logos/angular.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'react' %}"><img class="img-fluid" src="{% static 'images/logos/react.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-box">
+                    <a href="{% url 'css' %}"><img class="img-fluid" src="{% static 'images/logos/css.png' %}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="about">
+    <div class="container text-center">
+        <div class="col-md-6">
+            <h2>About Me</h2>
+            <p>Hey there!</p>
+            <p>My name is Ravi Kalyane. I'm a web developer</p>
+            <p>On this blog I post tutorial on Web Development</p>
+            <p>Click on Explore button below to check all tutorials.</p>
+            <a href="{% url 'post_list' %}">
+                <button class="btn btn-outline-success">Explore</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Get in touch</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="comment-form">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h5>Location:</h5>
+                <p>Chembur, Mumbai, India</p>
+                <h5>Email:</h5>
+                <p>ravi*****@gmail.com</p>
+                <h5>Mobile Number:</h5>
+                <p>+91 8291X XXXXX</p>
+                <div class="links">
+                    <ul>
+                        <li><h5>Social:</h5></li>
+                        <li><a class="fontawesome linkedin" href="https://www.linkedin.com/in/ravikalyane"
+                               target="_blank"><i
+                                class="fab fa-linkedin fa-2x"></i></a></li>
+                        <li><a class="fontawesome instagram" href="https://www.instagram.com/ravikalyane"
+                               target="_blank"><i
+                                class="fab fa-instagram fa-2x"></i></a></li>
+                        <li><a class="fontawesome twitter" href="https://www.twitter.com/raviikalyane"
+                               target="_blank"><i
+                                class="fab fa-twitter fa-2x"></i></a></li>
+                        <li><a class="fontawesome facebook" href="https://www.facebook.com/raviikalyane"
+                               target="_blank"><i
+                                class="fab fa-facebook-square fa-2x"></i></a></li>
+                        <li><a class="fontawesome youtube"
+                               href="https://www.youtube.com/channel/UCchubLfR1cF66PNpzAKMgXA" target="_blank"><i
+                                class="fab fa-youtube fa-2x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="footer">
+    <div class="container text-center">
+        <p>Made with Django by Ravi Kalyane</p>
+    </div>
+</section>
+
+
+{% endblock %}

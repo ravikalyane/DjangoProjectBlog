@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="title">{{post.title}}</div>
+            <div class="post-info">by {{post.author.first_name}} {{post.author.last_name}} in {{post.post_category}}</div>
+            <div class="post-date">{{post.last_updated.date}}</div>
+
+            <div class="post-image">
+                {% if post.image %}
+                <img class="img-fluid" src="{{post.image.url}}" alt="Unavailable">
+                {% endif %}
+            </div>
+            <div class="content">{{post.content|safe}}</div>
+            <br><br>
+
+            <div id="comments">
+                <h4>Comments ({{comment_count}})</h4>
+                <hr>
+                {% for comment in comment %}
+                <div class="message">
+                    <p style="font-weight: 500; font-size:18px; margin:10px auto 0px;">{{comment.name}}</p>
+                    <p style="font-size:12px; color: grey margin:0px;">{{comment.created_on.date}}</p>
+                    <p>{{comment.message | linebreaks}}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <hr>
+            <div class="comment-form">
+                <h4>Add a comment</h4>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button class="btn btn-primary" type="submit">Post</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
